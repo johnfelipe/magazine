@@ -1,0 +1,1463 @@
+/*
+* BIGNEWS V.1
+* Copyright 2013, Mandar Shirke
+* http://quadcodes.com	
+* DATE : 24/04/2013
+*/
+
+/* Table of Contents
+==================================================
+    
+	1. UNIVERSAL
+	2. TOP BAR
+	3. PRIMARY HEADER
+	4. PRIMARY NAVOGATION
+	5. CONTENT/LAYOUT
+	6. BLOG
+		6.1 SLIDER
+		6.2 CAROUSEL	
+	7. WIDGETS
+		7.1 qcList
+		7.2 qcTagList
+		7.3 qcLatestIssue
+		7.4 qcPostList
+		7.5 qcPostSingleList
+		7.6 qcPostCol
+		7.7 qcPostTabs
+		7.8 qcVideo		
+	8. LIST
+		8.1 TWITTER FEED
+		8.2 FLICKR
+		8.3 SOCIAL PROFILES
+		8.4 ADDRESS LIST	
+		8.5 GALLERY LIST
+	9. COMMENTS
+	10. TYPOGRAPHY
+	11. PLUGIN CSS
+		11.1 TIPSY	
+	12. MISCELLANEOUS
+	13. CONDITIONAL LAYOUT CSS FOR MOBILE / TABLET DEVICES [ MEDIA QUERIES ]
+	
+================================================== */
+
+
+/* IMPORT CSS 
+================================================== */
+
+@import url("architecture.css");
+@import url("shortcodes.css");
+
+
+/* --------------------------------------------------------------------------------------------------------------------------- */
+/* 1. UNIVERSAL */
+/* --------------------------------------------------------------------------------------------------------------------------- */
+
+body                                    { font: 11px/18px "Arial",  Helvetica; }
+
+                           
+/* --------------------------------------------------------------------------------------------------------------------------- */
+/* 2. TOPBAR */
+/* --------------------------------------------------------------------------------------------------------------------------- */
+
+#qcTopBar                               { width: 100%;
+                                          background: #333;
+                                          border-bottom: 3px #ddd solid;
+                                        }
+                                        
+/* -- TOP NAV -- */
+
+#qcTopNav                               { float: right }
+#qcTopNav li                            { float: left;
+                                          list-style: none;
+                                        }
+#qcTopNav li:last-child                 { margin-right: 0 }
+#qcTopNav li a                          { display: block;
+                                          padding: 7px 12px;
+                                          font-size: 9px;
+                                          color: #fff;
+                                          text-decoration: none;
+                                          text-transform: uppercase;
+                                        }
+#qcClock                                { position: absolute;
+                                          left: 0;
+                                          top: 6px;
+                                          font-size: 10px;
+                                          color: #fff;
+                                          background: url(../img/theme/qcWatchIcon.png) no-repeat 0 1px;
+                                          text-indent: 22px;
+                                          text-transform: uppercase;
+                                        }
+#qcClock strong                         { padding: 2px 8px;
+                                          margin-right: 3px;
+                                          background: #ddd;
+                                          border-radius: 10px;
+                                          color: #444;
+                                        }
+#qcRss                                  { background: url(../img/theme/qcRssIcon.png) no-repeat 0 7px;
+                                          text-indent: 10px;
+                                        }
+#qcTopNav li#qcRss a:hover              { color: #ff9000 }
+#qcSubscribe                            { background: url(../img/theme/qcSubscribeIcon.png) no-repeat 0 7px;
+                                          text-indent: 10px;
+                                        }
+#qcTopNav li#qcSubscribe a:hover        { color: #67d6ff }
+#qcEditor                               { background: url(../img/theme/qcEditIcon.png) no-repeat 0 7px;
+                                          text-indent: 10px;
+                                        }
+#qcTopNav li#qcEditor a:hover           { color: #b2ff67 }
+
+
+
+/* --------------------------------------------------------------------------------------------------------------------------- */
+/* 3. PRIMARY HEADER */
+/* --------------------------------------------------------------------------------------------------------------------------- */
+
+#qcPriHeader                            { background: #fff url(../img/theme/qcHeaderBg.png) no-repeat;
+                                          padding: 15px 0;
+                                        }
+#qcLogo                                 { float: left;
+                                          width: 230px;
+                                          min-height: 90px;
+                                        }
+#qcLogo a img                           { display: block }
+.qcAdBlock728X90                        { float: right;
+                                          width: 728px;
+                                          height: 90px;
+                                          background: #eee;
+                                        }
+                                        
+/* --------------------------------------------------------------------------------------------------------------------------- */
+/* 4. PRIMARY NAVIGATION */
+/* --------------------------------------------------------------------------------------------------------------------------- */
+                                        
+#FixWrapper                             { position: relative; 
+                                          width:100%; 
+                                          background: #fff;
+                                          z-index: 999;
+                                        }
+#FixWrapper.fixed                       { position: fixed; 
+                                          top: -2px;
+                                          -webkit-box-shadow: 0 0 15px #bbb;
+                                          -moz-box-shadow: 0 0 15px #bbb;
+                                          box-shadow: 0 0 15px #bbb; 
+                                        }
+
+#qcPriNav                               { position: relative;
+                                          width: 100%;
+                                          background: #239e5d;
+                                          border-top: 2px #ddd solid;
+                                          z-index: 999;
+                                        }
+                                        
+/* -- ESSENTIAL STYLES -- */
+
+.sf-menu,
+.sf-menu *                              { margin: 0;
+                                          padding: 0;
+                                          list-style: none;
+                                        }
+.sf-menu li                             { position: relative }
+.sf-menu ul                             { position: absolute;
+                                          display: none;
+                                          top: 100%;
+                                          left: 0;
+                                          z-index: 99;
+                                        }
+.sf-menu > li                           { float: left }
+.sf-menu li:hover > ul,
+.sf-menu li.sfHover > ul                { display: block }
+.sf-menu a                              { display: block;
+                                          position: relative;
+                                        }
+.sf-menu ul ul                          { top: 0;
+                                          left: 100%;
+                                        }
+                                                                                
+/* -- SKIN -- */
+
+.sf-menu                                { float: left }
+.sf-menu ul                             { min-width: 16em; /* allow long menu items to determine submenu width */
+                                          *width: 16em; /* no auto sub width for IE7, see white-space comment below */
+                                        }
+.sf-menu a                              { padding: 10px 10px;
+                                          text-decoration: none;
+                                          zoom: 1; /* IE7 */
+                                        }
+.sf-menu a                              { font: 14px/14px 'Patua One', sans-serif;
+                                          color: #fff;
+                                        }
+.sf-menu li                             { white-space: nowrap; /* no need for Supersubs plugin */
+                                          *white-space: normal; /* ...unless you support IE7 (let it wrap) */
+                                        }
+.sf-menu ul li                          { background: rgba(0, 0, 0, 0.7) }
+.sf-menu li.current                     { background: #127942 }
+.sf-menu ul ul li                       { background: rgba(0, 0, 0, 0.7) }
+.sf-menu ul li a,
+.sf-menu ul ul li a                     { padding: 8px 12px;
+                                          font: 11px/16px 'Patua One', sans-serif;
+                                        }
+.sf-menu li:hover                       { background: #111;
+                                          /* only transition out, not in */
+                                          -webkit-transition: none;
+                                          transition: none;
+                                        }
+.sf-menu li a:hover                     { color: #fff }
+.sf-menu li ul li a:hover               { color: #239e5d }
+/*** arrows (for all except IE7) **/
+.sf-arrows .sf-with-ul                  { padding-right: 2.5em;
+                                          *padding-right: 1em; /* no CSS arrows for IE7 (lack pseudo-elements) */
+                                        }
+/* styling for both css and generated arrows */
+.sf-arrows .sf-with-ul:after            { content: '';
+                                          position: absolute;
+                                          top: 50%;
+                                          right: 1em;
+                                          margin-top: -3px;
+                                          height: 0;
+                                          width: 0;
+                                          /* order of following 3 rules important for fallbacks to work */
+                                          border: 5px solid transparent;
+                                          border-top-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
+                                          border-top-color: rgba(255,255,255,.5);
+                                        }
+.sf-arrows > li > .sf-with-ul:focus:after,
+.sf-arrows > li:hover > .sf-with-ul:after,
+.sf-arrows > .sfHover > .sf-with-ul:after
+                                        { border-top-color: white; /* IE8 fallback colour */
+                                        }
+/* styling for right-facing arrows */
+.sf-arrows ul .sf-with-ul:after         { margin-top: -5px;
+                                          margin-right: -3px;
+                                          border-color: transparent;
+                                          border-left-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
+                                          border-left-color: rgba(255,255,255,.5);
+                                        }
+.sf-arrows ul li > .sf-with-ul:focus:after,
+.sf-arrows ul li:hover > .sf-with-ul:after,
+.sf-arrows ul .sfHover > .sf-with-ul:after
+                                        { border-left-color: white }
+#dd-menu                                { display: none }
+
+
+/* -- SUB-BAR -- */
+
+#qcSubBar                               { padding: 9px 0;
+                                          background: #666;
+                                        }
+#qcSubBar .label-info                   { float: left;
+                                          padding: 2px 8px;
+                                          margin: 1px 10px;
+                                          font-weight: normal;
+                                          font-size: 10px;
+                                          background: #29a9fc;
+                                          border-radius: 10px;
+                                          text-shadow: none;
+                                        }
+#qcNewsTicker,
+#qcBreadCrumb                           { float: left }
+#qcNewsTicker li                        { list-style: none;
+                                          color: #fff;
+                                          width: 600px;
+                                        }
+#qcBreadCrumb                           { padding: 2px 10px;
+                                          margin: 25px 0 2px 0;
+                                          background: #fafafa;
+                                          -webkit-border-radius: 15px;
+                                          -moz-border-radius: 15px;
+                                          border-radius: 15px;
+                                          -webkit-box-shadow: inset 0 0 5px #ccc;
+                                          -moz-box-shadow: inset 0 0 5px #ccc;
+                                          box-shadow: inset 0 0 5px #ccc;
+                                          border: 1px #ddd solid;
+                                        }
+#qcBreadCrumb li                        { float: left;
+                                          list-style: none;
+                                          margin-right: 8px;
+                                          color: #666;
+                                          text-transform: uppercase;
+                                          font-size: 9px;
+                                        }
+#qcBreadCrumb li:first-child            { margin: 0 10px 0 0;
+                                          padding: 9px;
+                                          background: url('../img/theme/qcHomeIcon.png') no-repeat;
+                                        }
+#qcBreadCrumb li a                      { color: #666;
+                                          text-decoration: none;
+                                        }
+#qcBreadCrumb span.arrow                { float: right;
+                                          color: #aaa;
+                                          margin-left: 8px;
+                                        }
+#qcBreadCrumb.single                    { margin-top: 25px }
+#qcSearchBox                            { position: absolute;
+                                          right: 0;
+                                          top: 0;
+                                        }
+#qcSearchBox input                      { width: 180px;
+                                          padding: 11px;
+                                          margin: 0;
+                                          color: #aaa;
+                                          background: #444 url('../img/theme/qcSearchIcon.png') top right no-repeat;
+                                          border: 0;
+                                        }
+#qcSearchBox input:focus                { outline: none }
+
+
+
+/* --------------------------------------------------------------------------------------------------------------------------- */
+/* 5. CONTENT/LAYOUT */
+/* --------------------------------------------------------------------------------------------------------------------------- */
+
+#qcContentWrapper                       { margin-top: 20px;
+                                          border: 1px #ddd solid;
+                                        }
+#qcMainContent                          { float: left;
+                                          width: 69.8%;
+                                          background: #fff;
+                                          border-right: 1px #ddd solid;
+                                        }
+#qcMainContent.home                     { width: 50% }
+.qcTitleModule                          { position: relative }
+.qcTitleModule .qcViewAll               { margin: 3px 10px 0 0 }
+#qcAside-1                              { float: left;
+                                          width: 19.7%;
+                                          border-right: 1px #ddd solid;
+                                          background: #fafafa;
+                                          -webkit-box-shadow: inset 0 0 5px #eee;
+                                          -moz-box-shadow: inset 0 0 5px #eee;
+                                          box-shadow: inset 0 0 5px #eee;
+                                        }
+#qcAside-2                              { float: left;
+                                          width: 30%;
+                                          background: #fff;
+                                        }
+#qcAside-2.single                       { width: 30.09%;
+                                          background: #fafafa;
+                                          box-shadow: inset 0 0 10px #ddd;
+                                        }
+.qcFeaturedLable                        { position: absolute;
+                                          width: 106px;
+                                          height: 41px;
+                                          margin: 35px 0 0 -10px;
+                                          background: url('../img/theme/qcfeatured.png') no-repeat;
+                                          z-index: 99;
+                                        }
+#qcSubFooter                            { margin: 30px auto 27px auto;
+                                          border: 1px #ddd solid;
+                                          background: #fafafa;
+                                          -webkit-box-shadow: inset 0 0 5px #eee;
+                                          -moz-box-shadow: inset 0 0 5px #eee;
+                                          box-shadow: inset 0 0 5px #eee;
+                                          border-radius: 5px;
+                                        }
+#qcFooter                               { width: 100%;
+                                          padding: 14px 0;
+                                          background: #222;
+                                          border-top: 3px #ddd solid;
+                                        }
+#qcFooterNav                            { display: block;
+                                          width: 100%;
+                                          padding-bottom: 12px;
+                                          border-bottom: 1px #444 dotted;
+                                        }
+#qcFooterNav ul                         { width: 100% }
+#qcFooterNav ul li                      { list-style: none;
+                                          float: left;
+                                        }
+#qcFooterNav ul li a                    { padding: 0 12px;
+                                          font: 12px/20px 'Patua One', sans-serif;
+                                          color: #bbb;
+                                          text-decoration: none;
+                                          text-transform: uppercase;
+                                          border-right: 1px #555 dotted;
+                                        }
+#qcFooterNav ul li:first-child a        { padding-left: 0 }
+#qcFooterNav ul li:last-child a         { border: 0 }
+#qcScrollTop                            { position: absolute;
+                                          top: 0;
+                                          right: 0;
+                                          padding: 3px 10px;
+                                          margin-top: -2px;
+                                          color: #fff;
+                                          font: 600 10px/18px "Arial",  Helvetica;
+                                          text-decoration: none;
+                                          background: #000;
+                                          border-radius: 3px;
+                                          border: 0;
+                                        }
+#qcScrollTop:hover                      { background: #444 }
+#qcCopyright                            { display: block;
+                                          margin-top: 12px;
+                                          color: #aaa;
+                                          line-height: 20px;
+                                        }
+#qcCopyright a                          { color: #fff;
+                                          text-decoration: none;
+                                        }
+#qcGlobalSite                           { clear: both;
+                                          padding: 20px;
+                                          background: #eee;
+                                          border-top: 1px #ddd solid;
+                                          box-shadow: inset 0 0 7px #ddd;
+                                        }
+#qcGlobalSite li                        { float: left;
+                                          list-style: none;
+                                        }
+#qcGlobalSite li:first-child            { font-weight: 600;
+                                          color: #000;
+                                        }
+#qcGlobalSite li a                      { padding: 0px 10px;
+                                          border-right: 1px #bbb dotted;
+                                          color: #666;
+                                          text-decoration: none;
+                                        }
+#qcGlobalSite li:last-child a           { border: 0 }
+.pagination ul                          { float: right;
+                                          -webkit-box-shadow: inset 0 0 10px #ddd;
+                                          -moz-box-shadow: inset 0 0 10px #ddd;
+                                          box-shadow: inset 0 0 10px #ddd;
+                                          border: 1px #ddd solid;
+                                        }
+.pagination ul li a                     { border: 0;
+                                          color: #666;
+                                          border-right: 1px #ddd dotted;
+                                        }
+.pagination ul li:last-child a          { border-right: 0 }
+.pagination ul li.active a,
+.pagination ul li.active a:hover        { background: transparent;
+                                          color: orange;
+                                        }
+.qcFullwidth                            { margin: 15px }
+.qcOneColumn                            { margin: 10px 0;
+                                          width: 100%;
+                                        }
+.qcTwoColumns                           { float: left;
+                                          margin: 10px 20px 10px 0;
+                                          width: 455px;
+                                        }
+.qcThreeColumns                         { float: left;
+                                          margin: 10px 20px 10px 0;
+                                          width: 296px;
+                                        }
+.qcFourColumns                          { float: left;
+                                          margin: 10px 20px 10px 0;
+                                          width: 217px;
+                                        }
+.qcFiveColumns                          { float: left;
+                                          margin: 10px 20px 10px 0;
+                                          width: 170px;
+                                        }
+.qcTwoColumns.last,
+.qcThreeColumns.last,
+.qcFourColumns.last,
+.qcFiveColumns.last                     { margin-right: 0 }
+hr                                      { border-bottom: 1px dotted #ccc;
+                                          height: 1px;
+                                          margin: 25px 0;
+                                          width: 100%;
+                                        }
+.the-icons                              { list-style: none }
+#qcContactMap                           { height: 260px;
+                                          border-top: 3px #ddd solid;
+                                          border-bottom: 3px #ddd solid;
+                                        }
+#qcFormWrapper                          { margin: 18px 15px 15px 15px }
+.qcForm                                 { margin-top: 20px }
+.qcForm input,
+.qcForm textarea                        { width: 377px;
+                                          padding: 9px 10px;
+                                        }
+.qcForm select                          { width: 398px;
+                                          padding: 9px;
+                                        }
+.qcForm .btn-success                    { position: relative;
+                                          top: 5px;
+                                          padding: 7px;
+                                        }
+#qcWorldMap img                         { display: block;
+                                          width: 100%;
+                                          height: auto;
+                                          border-bottom: 1px #ddd solid;
+                                        }
+                                        
+    
+                                        
+/* --------------------------------------------------------------------------------------------------------------------------- */
+/* 6. BLOG */
+/* --------------------------------------------------------------------------------------------------------------------------- */
+
+article.qcBlogEntry                     { margin: 15px }
+article.qcBlogEntry .paper-box          {   }
+.qcBlogEntry img                        { display: block }
+.hover-post-format                      { float: left;
+                                          width: 100px;
+                                          height: 50px;
+                                          border-right: 1px #666 solid;
+                                        }
+.hover-post-format span                 { position: relative;
+                                          top: -5px;
+                                          font-family: "Arial", Helvetica;
+                                          font-size: 9px;
+                                          text-shadow: none;
+                                          color: #fff;
+                                        }
+.hover-post-format-text                 { font-family: "Arial", Helvetica;
+                                          font-size: 10px;
+                                          text-shadow: none;
+                                          color: #fff;
+                                          width: 100px;
+                                          border-right: 1px #ccc solid;
+                                          text-align: center;
+                                          padding-top: 5px;
+                                          float: left;
+                                          margin-top: -4px;
+                                          text-transform: uppercase;
+                                        }
+.hover-post-meta                        { padding: 5px 0;
+                                          text-shadow: none;
+                                        }
+.hover-post-metas                       { float: left;
+                                          font-family: "Arial", Helvetica;
+                                          font-size: 10px;
+                                          padding-right: 4px;
+                                          border-right: 1px #ccc solid;
+                                        }
+.hover-post-meta-like                   { float: left;
+                                          height: 18px;
+                                          margin: 1px 5px;
+                                          color: #fff;
+                                          text-indent: 22px;
+                                          text-decoration: none;
+                                          background: url('../img/theme/sprite.png') 0px -54px no-repeat;
+                                        }
+.hover-post-meta-like:hover             { color: #ff0000;
+                                          background: url('../img/theme/sprite.png') 0px -72px no-repeat;
+                                          border: 0;
+                                        }
+.hover-post-meta-comment                { float: left;
+                                          height: 18px;
+                                          margin: 1px 5px;
+                                          color: #fff;
+                                          text-indent: 24px;
+                                          text-decoration: none;
+                                          background: url('../img/theme/sprite.png') 0px -90px no-repeat;
+                                        }
+.hover-post-meta-comment:hover          { color: #fff;
+                                          border: 0;
+                                          background: url('../img/theme/sprite.png') 0px -108px no-repeat;
+                                        }
+.hover-post-meta-date                   { float: left;
+                                          height: 18px;
+                                          margin: 1px 5px;
+                                          color: #fff;
+                                          text-indent: 24px;
+                                          text-decoration: none;
+                                          background: url('../img/theme/sprite.png') 0px -126px no-repeat;
+                                        }
+.hover-post-meta-date:hover             { color: #fff;
+                                          border: 0;
+                                          background: url('../img/theme/sprite.png') 0px -144px no-repeat;
+                                        }
+.hover-post-format-icon                 { position: relative;
+                                          left: 42px;
+                                          top: 19px;
+                                          float: left;
+                                          width: 18px;
+                                          height: 18px;
+                                        }
+.hover-post-title                       { float: left;
+                                          padding-left: 15px;
+                                        }
+.hover-post-head                        { position: relative;
+                                          background: #222;
+                                          padding: 10px 0 0 0;
+                                          overflow: hidden;
+                                        }
+.hover-post-metas.last                  { border: 0 }
+.text-gradient-blog                     { position: absolute;
+                                          width: 40px;
+                                          height: 60px;
+                                          right: 0px;
+                                          background: url('../img/theme/gradient-blog.png');
+                                          z-index: 99;
+                                        }
+.blog-meta                              { position: relative;
+                                          background-color: #239e5d;
+                                        }
+.blog-meta .pf-heading                  { position: absolute;
+                                          width: 100%;
+                                          color: #FFFFFF;
+                                          overflow: hidden;
+                                          font: 15px/42px 'Patua One',sans-serif;
+                                          text-transform: uppercase;
+                                        }
+.blog-meta .pf-heading a                { position: relative;
+                                          color: #FFFFFF;
+                                        }
+.blog-meta .pf-heading a:hover          { color: #ddd;
+                                          border: 0;
+                                        }
+.qcPostPreview                          { position: relative }
+.qcPostPreview .centered-btns_tabs      { bottom: 20px }
+.qcPostPreview .rslides_container       { padding: 0;
+                                          border: 0;
+                                        }
+.qcPostPreview .centered-btns_nav       { z-index: 999 }
+.qcPostPreview blockquote               { padding: 20px;
+                                          border-left: 5px #ccc solid;
+                                          border-right: 1px #ddd solid;
+                                          margin: 0;
+                                          background: #fff;
+                                          -webkit-box-shadow: inset 0 0 20px #ddd;
+                                          -moz-box-shadow: inset 0 0 20px #ddd;
+                                          box-shadow: inset 0 0 20px #ddd;
+                                        }
+.qcPostPreview blockquote small         { margin-top: 10px }
+.qcPostPreview img                      { width: 100%;
+                                          position: relative;
+                                          z-index: 9;
+                                        }
+.qcExerpt,
+.qcPostContent                          { padding: 20px 0 }
+.qcPostContent img                      { width: auto;
+                                          margin: 0 10px 10px 10px;
+                                        }
+.blog-pf-link                           { width: 100%;
+                                          border: 0;
+                                        }
+.clinkable                              { height: 40px;
+                                          background: #000;
+                                          text-shadow: none;
+                                          padding: 0px 8px;
+                                          font-family: Courier;
+                                          font-size: 12px;
+                                        }
+.clinkable a                            { padding-left: 15px;
+                                          text-decoration: none;
+                                          color: #fff;
+                                        }
+.absolute-text                          { height: 40px;
+                                          overflow: hidden;
+                                          font-family: Courier;
+                                          font-size: 12px;
+                                          line-height: 40px;
+                                          padding: 0 0 0 15px;
+                                          background: #fff;
+                                          border-right: 1px #ddd solid;
+                                          -webkit-box-shadow: inset 0 0 15px #ddd;
+                                          -moz-box-shadow: inset 0 0 15px #ddd;
+                                          box-shadow: inset 0 0 15px #ddd;
+                                        }
+.pf-gallery                             { background: url('../img/theme/sprite.png') 0px -162px }
+.pf-link                                { background: url('../img/theme/sprite.png') 0px -180px }
+.pf-image                               { background: url('../img/theme/sprite.png') 0px -198px }
+.pf-quote                               { background: url('../img/theme/sprite.png') 0px -216px }
+.pf-status                              { background: url('../img/theme/sprite.png') 5px -234px }
+.pf-video                               { background: url('../img/theme/sprite.png') 0px -252px }
+.pf-audio                               { background: url('../img/theme/sprite.png') 0px -270px }
+.pf-standard                            { background: url('../img/theme/sprite.png') 0px -288px }
+p.readmore                              { padding-top: 20px;
+                                          margin-top: 15px;
+                                          border-top: 1px #eee solid;
+                                        }
+.read-more                              { color: #666;
+                                          position: relative;
+                                          top: 1px;
+                                        }
+p.readmore i                            { opacity: 0.6 }
+
+
+/* -- 6.1 SLIDER -- */
+
+#qcSlider                               { position: relative;
+                                          margin: 15px;
+                                          border: 10px #eee solid;
+                                          height: 430px;
+                                        }
+.slides li                              { position: relative;
+                                          width: 100%;
+                                        }
+#qcSlider li img                        { width: 430px;
+                                          height: 430px;
+                                        }
+.slides .content                        { position: absolute;
+                                          bottom: 0;
+                                          width: 100%;
+                                          padding: 15px;
+                                          background: rgba(0, 0, 0, 0.6);
+                                        }
+.slides span                            { padding: 3px 5px;
+                                          font: 600 10px/10px "Arial", Helvetica;
+                                          background: #239e5d;
+                                          border-radius: 1;
+                                        }
+.slides h4                              { font: 12px/18px 'Patua One', sans-serif;
+                                          text-transform: uppercase;
+                                          margin: 0 0 5px 0;
+                                        }
+.slides h4 a                            { color: #fff;
+                                          text-decoration: none;
+                                        }
+.slides p                               { color: #ccc;
+                                          margin: 0 0 10px 0;
+                                        }
+                                        
+/* -- 6.2 CAROUSEL -- */
+
+.carousel                               { border: 10px #eee solid;
+                                          margin-top: 15px;
+                                          min-height: 144px;
+                                        }
+.carousel li                            { cursor: pointer;
+                                          margin: 0;
+                                        }
+.tabs li a                              { text-transform: uppercase }
+.tabs span.badge                        { position: relative;
+                                          top: -2px;
+                                          right: -8px;
+                                          padding: 1px 8px;
+                                          font: 200 10px/10px "Arial", Helvetica;
+                                        }
+                              
+                                      
+/* --------------------------------------------------------------------------------------------------------------------------- */
+/* 7. WIDGETS */
+/* --------------------------------------------------------------------------------------------------------------------------- */
+
+.widget                                 { position: relative;
+                                          margin: 20px 20px 30px 20px;
+                                        }
+.widget h4,
+.qcTitleModule h4                       { padding: 10px 0;
+                                          font: 15px/18px 'Patua One', sans-serif;
+                                          color: #000;
+                                          border-bottom: 1px #ddd solid;
+                                          border-top: 3px #000 solid;
+                                          text-transform: uppercase;
+                                          text-align: center;
+                                        }
+.qcTitleModule h4                       { padding: 13px 0;
+                                          background: #fafafa url('../img/theme/qcTMGrad.png') repeat-x;
+                                          text-align: left;
+                                          text-indent: 25px;
+                                          -webkit-box-shadow: 0 0 5px #eee;
+                                          -moz-box-shadow: 0 0 5px #eee;
+                                          box-shadow: 0 0 5px #eee;
+                                        }
+.widget p                               { margin-top: 8px }
+#qcAside-1 .widget h4                   { padding: 8px 0;
+                                          font: 12px/18px 'Patua One', sans-serif;
+                                        }
+#qcMainContent .widget                  { margin: 20px 15px 30px 15px }
+#qcMainContent .widget h4               { text-align: left;
+                                          text-indent: 10px;
+                                        }
+#qcSubFooter .widget                    { float: left;
+                                          width: 279px;
+                                          padding: 20px;
+                                          margin: 0;
+                                          border-right: 1px #ddd solid;
+                                        }
+#qcSubFooter .widget:last-child         { border: 0 }
+
+
+/* -- 7.1 WIDGET : qcList -- */
+
+.qcList                                 { margin: 10px 0 }
+.qcList li                              { list-style: none;
+                                          border-bottom: 1px #ddd dotted;
+                                        }
+.qcList li:last-child                   { border: 0 }
+.qcList li a                            { display: block;
+                                          padding: 5px 0;
+                                          color: #666;
+                                          text-decoration: none;
+                                          text-transform: uppercase;
+                                          font-size: 10px;
+                                        }
+.qcList li a span                       { float: right;
+                                          padding: 0 6px;
+                                          background: #666;
+                                          color: #fff;
+                                          border-radius: 10px;
+                                        }
+.qcList li:hover span                   { background: #239e5d }
+
+
+/* -- 7.2 WIDGET : qcTagList -- */
+
+.qcTagList                              { list-style: none;
+                                          margin: 15px 0;
+                                        }
+.qcTagList li                           { float: left }
+.qcTagList li a                         { display: block;
+                                          padding: 0 8px;
+                                          margin: 2px;
+                                          font-size: 9px;
+                                          color: #fff;
+                                          background: #666;
+                                          border-radius: 10px;
+                                          text-decoration: none;
+                                          text-transform: uppercase;
+                                        }
+.qcTagList li a:hover                   { background: #239e5d }
+
+
+/* -- 7.3 WIDGET : qcLatestIssue -- */
+
+.qcLatestIssue                          { text-align: center }
+.qcLatestIssue img                      { position: relative;
+                                          margin: 10px 0 0 0;
+                                          width: 100%;
+                                          border: 1px #ddd solid;
+                                        }
+.qcLatestIssue a.btn                    { margin-top: 7px;
+                                          text-decoration: none;
+                                        }
+                                                                 
+/* -- 7.4 WIDGET : qcPostList -- */
+
+.qcPostList                             { list-style: none;
+                                          padding-top: 8px;
+                                        }
+.qcPostList li                          { border-bottom: 1px #ddd dotted;
+                                          padding: 0 10px;
+                                        }
+.qcPostList li:last-child               { border: 0 }
+.qcPostList li a                        { display: block;
+                                          font-size: 12px;
+                                          color: #000;
+                                          border: 0;
+                                          text-align: left;
+                                          text-decoration: none;
+                                        }
+.qcPostList li h4                       { border: 0 }
+.qcPostList img                         { float: left;
+                                          margin: 10px 10px 10px 0;
+                                          border: 1px #ddd solid;
+                                        }
+.qcPostList li img:hover                { opacity: 0.8 }
+.qcTimeStamp                            { float: left;
+                                          background: url('../img/theme/qcTimeIcon.png') no-repeat;
+                                          text-indent: 20px;
+                                        }
+.qcAuthor                               { float: left;
+                                          background: url('../img/theme/qcAuthorIcon.png') no-repeat;
+                                          text-indent: 20px;
+                                          margin-left: 15px;
+                                        }
+.qcCommentCount                         { float: right;
+                                          background: url('../img/theme/qcCommentIcon.png') no-repeat;
+                                          text-indent: 22px;
+                                        }
+.qcPostList .qcCommentCount a           { font-size: 10px;
+                                          color: #666;
+                                        }
+#qcMainContent .qcPostList li h4        { text-indent: 0;
+                                          margin-top: 3px;
+                                        }
+.qcViewAll                              { position: absolute;
+                                          right: 10px;
+                                          top: 13px;
+                                          font-size: 10px;
+                                          background: url('../img/theme/qcViewAll.png') no-repeat 0 1px;
+                                          text-transform: uppercase;
+                                          text-indent: 23px;
+                                        }
+.qcViewAll a                            { color: #666;
+                                          text-decoration: none;
+                                        }
+.qcViewAll a:hover                      { color: orange }
+.qcViewAll a .badge                     { margin-left: 2px;
+                                          padding: 2px 8px;
+                                        }
+.qcPostList li p                        { margin: -7px 0 8px 5px }
+
+/* -- 7.5 WIDGET : qcPostSingleList -- */
+
+.qcPostSingleList                       { list-style: none;
+                                          padding-top: 8px;
+                                        }
+.qcPostSingleList li                    { border-bottom: 1px #ddd solid;
+                                          padding: 20px 10px;
+                                        }
+.qcPostSingleList li:first-child        { padding-top: 0 }
+.qcPostSingleList li a img              { float: left;
+                                          width: 190px;
+                                          height: 190px;
+                                          padding: 5px;
+                                          -webkit-box-shadow: 0 0 5px #eee;
+                                          -moz-box-shadow: 0 0 5px #eee;
+                                          box-shadow: 0 0 5px #eee;
+                                          margin-right: 15px;
+                                          border: 1px #ddd solid;
+                                        }
+#qcMainContent .widget .qcPostSingleList h4
+                                        { border : 0;
+                                          text-indent: 0;
+                                          padding: 0 0 12px 0;
+                                          line-height: 24px;
+                                        }
+.qcPostSingleList h4 a                  { color: #000 }
+.qcPostSingleList .qcCommentCount       { float: left;
+                                          margin-left: 15px;
+                                        }
+.qcPostSingleList .exerpt               { margin-top: 30px }
+.qcPostSingleList .exerpt .btn          { margin-top: 15px }
+.qcPostSingleList .qcCommentCount a     { color: #666 }
+
+
+/* -- 7.6 WIDGET : qcPostCol -- */
+
+.qcPostCol                              { list-style: none }
+.qcPostCol li                           { float: left;
+                                          width: 49.8%;
+                                          border-right: 1px #ddd dotted;
+                                          border-right: 0\9; /* IE8 hack */
+                                        }
+.qcPostCol li:nth-child(even)           { border: 0 }
+.qcPostCol li div                       { padding: 10px }
+.qcPostCol li img                       { display: block;
+                                          width: 100%;
+                                          margin: 0 0 5px 0;
+                                        }
+.qcPostCol li img:hover                 { opacity: 0.9 }
+.qcPostCol li a                         { display: block;
+                                          font-size: 14px;
+                                          color: #000;
+                                          border: 0;
+                                          text-align: left;
+                                          text-decoration: none;
+                                        }
+#qcMainContent .widget .qcPostCol li h4 { padding-left: 0;
+                                          border: 0;
+                                          text-indent: 0;
+                                        }
+.qcPostCol li p                         { padding-bottom: 8px;
+                                          margin-bottom: 10px;
+                                          border-bottom: 1px #ddd solid;
+                                        }
+.qcPostCol li .qcCommentCount a         { padding-bottom: 5px;
+                                          font-size: 10px;
+                                          color: #666;
+                                        }           
+                                       
+/* -- 7.7 WIDGET : qcPostTabs -- */
+
+.widget .tabs                           { margin: 15px 0 0 0 }
+.widget .tabs li a                      { font: 12px/34px 'Patua One', sans-serif }
+.widget .tabs li a.selected             { background: url('../img/theme/qcTabBorder.png') repeat-x }
+.widget .tabs .qcPostList               { padding-top: 0 }
+.widget .tab-content                    { padding-top: 0;
+                                          padding-bottom: 0;
+                                        }
+                                                                           
+/* -- 7.8 WIDGET : qcVideo -- */
+
+.widget .qcFitVids                      { margin: 15px 0 0 0 }
+
+
+/* --------------------------------------------------------------------------------------------------------------------------- */
+/* 8. LIST */
+/* --------------------------------------------------------------------------------------------------------------------------- */
+
+/* === 8.1 TWITTER FEED === */
+
+ul.tweet_list li                        { background: url("../img/theme/twitter-widget-bg.png") no-repeat scroll right bottom;
+                                          border-bottom: 1px solid #eee;
+                                          font-size: 11px;
+                                          line-height: 20px;
+                                          list-style: none;
+                                          padding: 10px 0;
+                                          text-shadow: none;
+                                        }
+ul.tweet_list li .tweet_time a          { background: none repeat scroll 0 0 #EB4F1E;
+                                          color: #fff;
+                                          font-size: 10px;
+                                          padding: 2px 5px;
+                                          text-decoration: none;
+                                          -webkit-border-radius: 2px;
+                                          -moz-border-radius: 2px;
+                                          border-radius: 2px;
+                                        }
+ul.tweet_list li .tweet_text a          { background: none repeat scroll 0 0 #555555;
+                                          color: #FFFFFF;
+                                          font-size: 10px;
+                                          padding: 2px 5px;
+                                          text-decoration: none;
+                                          -webkit-border-radius: 2px;
+                                          -moz-border-radius: 2px;
+                                          border-radius: 2px;
+                                        }
+ul.tweet_list li:first-child            { margin-top: 0 }
+ul.tweet_list li:last-child             { border: 0 }
+ul#tagslide li                          { list-style: none outside none }
+
+
+/* === 8.2 FLICKR === */
+
+#flickr                                 { margin: 12px 0 0 5px }
+#flickr li                              { list-style: none;
+                                          float: left;
+                                          margin: 3px;
+                                          border: 1px #fff solid;
+                                        }
+#flickr li:hover                        { border: 1px #333 solid }
+#flickr li img                          { display: block;
+                                          width: 45px;
+                                        }
+                                                                             
+/* === 8.3 SOCIAL PROFILES === */
+
+#qcSocialProfiles                       { margin: 10px 0 0 0 }
+#qcSocialProfiles li                    { list-style: none;
+                                          float: left;
+                                          margin: 0 5px 0px 0;
+                                        }
+#qcSocialProfiles li a:hover            { border: 0;
+                                          opacity: 0.8;
+                                        }
+                                                                          
+/* === 8.4 ADDRESS LIST === */
+
+ul.qcAddress                            { margin-top: -10px }
+ul.qcAddress li                         { list-style: none;
+                                          padding: 8px 0;
+                                          font-size: 11px;
+                                          border-bottom: 1px #ddd dotted;
+                                        }
+ul.qcAddress li:first-child             { margin-top: 15px }
+ul.qcAddress li:last-child              { border: 0 }
+ul.qcAddress li p                       { margin: -16px 0 3px 20px }
+ul.qcAddress li i                       { position: relative;
+                                          overflow: hidden;
+                                          margin: 3px 7px 0 0;
+                                        }
+                                        
+/* === 8.5 GALLERY LIST === */                                       
+                                        
+#qcPostGal li  					{ list-style: none;
+								  float: left;
+								  width: 118px;
+								  margin: 3px;
+								  border: 1px #bbb solid;
+								}                                     
+#qcPostGal li img 					{ display: block;
+								  width: 100%;
+								}                                        
+                                        
+                                        
+                                        
+/* --------------------------------------------------------------------------------------------------------------------------- */
+/* 9. COMMENTS   */
+/* --------------------------------------------------------------------------------------------------------------------------- */
+
+.comment-box                            { margin: -20px 15px 45px 15px;
+                                          border: 3px #f5f5f5 solid;
+                                          -webkit-border-radius: 5px;
+                                          -moz-border-radius: 5px;
+                                          border-radius: 5px;
+                                        }
+.comment-box h6                         { text-align: center;
+                                          font-size: 13px;
+                                          padding: 12px 0;
+                                          color: #666;
+                                          background: #f5f5f5;
+                                        }
+#comments                               { position: relative;
+                                          padding: 0 20px 20px 20px;
+                                          background: #fafafa;
+                                          border-top: 1px #e5e5e5 solid;
+                                          border-bottom: 1px #ddd solid;
+                                        }
+#comments .comment.depth-1:first-child  { border: none }
+#comments .comment.depth-1:last-child   { border-bottom: none }
+#comments .pingbacks li.pingback        { margin: 10px 0 }
+#comments .pingbacks li.pingback .reply { display: none }
+#comments .comment.bypostauthor         {   }
+#comments .cancel-comment-reply         { margin: 10px 0 }
+#comments .comment.thread-even          { border-bottom: 1px dashed #dedede }
+#comments .comment-entry                { margin: 0 0 0 50px }
+#comments .comment-entry p              { margin: 0 0 0 20px }
+#comments .comment-head                 { margin: 0 0 15px 50px }
+#comments .comment-head .name           { margin: 0;
+                                          font-weight: bold;
+                                          font-size: 13px;
+                                        }
+#comments .comment-head .date,
+#comments .comment-head .edit,
+#comments .comment-head .perma          { color: #666;
+                                          font-size: 11px;
+                                        }
+#comments ul.children                   { background: url("../img/comment-child-arrow.html") no-repeat scroll 1.25em 2.5em transparent;
+                                          margin: 10px 0 0;
+                                          padding: 0 0 0 50px;
+                                        }
+#comments ul.children li                { border-top: 1px dashed #dedede }
+#comments .nocomments                   { font-size: 14px;
+                                          font-weight: bold;
+                                        }
+#comments .navigation                   {   }
+#comments .navigation a                 { display: block;
+                                          margin: 15px 0 0 0;
+                                          text-decoration: none;
+                                        }
+#comments .navigation a:hover           {   }
+#comments h3#pings                      { margin-top: 25px }
+#comments .comment                      { border-top: 1px dashed #dedede;
+                                          width: 100%;
+                                          list-style-type: none;
+                                        }
+#comments .comment .comment-container   { position: relative;
+                                          padding: 20px 0 0 0;
+                                        }
+#comments .avatar                       { float: left;
+                                          margin-right: 20px;
+                                        }
+#comments .avatar img                   { margin: 0;
+                                          vertical-align: middle;
+                                          padding: 3px;
+                                          border: 1px solid #c2c5ca;
+                                          background: #fff;
+                                          -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+                                          -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+                                          box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+                                        }
+#comments .reply                        { padding-top: 10px;
+                                          position: absolute;
+                                          right: 0;
+                                          top: 5px;
+                                        }
+#comments .reply a                      { font: 11px/18px sans-serif;
+                                          text-transform: lowercase;
+                                        }
+#comments .reply a:hover                {   }
+#comments h3                            { color: #333;
+                                          font-weight: normal;
+                                          margin-bottom: 20px;
+                                        }
+ol.commentlist                          {   }
+ol.commentlist li                       { margin: 10px 0 }
+.comment-header-border                  { background-color: #e9ebed;
+                                          height: 1px;
+                                          margin: 0 auto;
+                                          display: block;
+                                          width: 200px;
+                                        }
+                                                                              
+/* === COMMENTS FORM === */
+#respond                                { text-align: left;
+                                          width: 100%;
+                                          padding-bottom: 25px;
+                                        }
+#respond #commentform #submit           { cursor: pointer;
+                                          float: right;
+                                          font-family: sans-serif;
+                                          font-size: 12px;
+                                          font-weight: bold;
+                                          margin: 0;
+                                        }
+#respond label                          { font-size: 11px;
+                                          color: #777;
+                                        }
+#respond h4                             { color: #555;
+                                          font-size: 13px;
+                                          font-weight: 400;
+                                          padding: 8px 0 5px 0;
+                                        }
+.respond-inset-wrapper                  { padding: 20px }
+#commentform                            { margin: 10px 0 0 0 }
+#commentform .field                     { margin: 20px 0 }
+#commentform input.txt                  { background: #f2f2f2;
+                                          border: 1px #ddd solid;
+                                          font-size: 11px;
+                                          width: 50%;
+                                          margin-right: 6px;
+                                        }
+#commentform input.txt,
+#commentform textarea                   { padding: 10px }
+#commentform input.txt:focus,
+#commentform textarea:focus             { border-color: rgba(82, 168, 236, 0.40) !important;
+                                          box-shadow: 0 0 3px rgba(82, 168, 236, 0.5);
+                                        }
+#commentform textarea                   { background: #f2f2f2;
+                                          width: 96% !important;
+                                          border: 1px #ddd solid;
+                                          font-size: 11px;
+                                          margin-bottom: 15px;
+                                        }
+#commentform label                      { position: relative;
+                                          display: inline;
+                                          vertical-align: top;
+                                          display: inline-block;
+                                          margin-top: 5px;
+                                        }
+                                        
+                                        
+/* --------------------------------------------------------------------------------------------------------------------------- */
+/* 10. TYPOGRAPHY */
+/* --------------------------------------------------------------------------------------------------------------------------- */
+
+a                                       { text-decoration: none;
+                                          color: #239e5d;
+                                        }
+a:hover,
+.qcList li:hover a,
+.qcPostList li a:hover,
+.slides h4 a:hover,
+.qcPostCol li a:hover,
+#qcCopyright a:hover,
+#qcFooterNav ul li a:hover,
+#qcGlobalSite li a:hover,
+#qcBreadCrumb li a:hover,
+.qcPostSingleList h4 a:hover,
+.qcPostSingleList .qcCommentCount a:hover,
+.pagination ul li a:hover               { color: #239e5d }
+h1,
+h2,
+h3,
+h4,
+h5                                      { font-family: 'Patua One', sans-serif;
+                                          font-weight: 300;
+                                        }
+h1                                      { font-size: 24px }
+h2                                      { font-size: 18px }
+h3                                      { font-size: 14px }
+h4                                      { font-size: 12px }
+h5                                      { font-size: 10px }
+h6                                      { font-size: 8px }
+.dropcap                                { font-size: 30px;
+                                          margin: 0 3px 5px 0;
+                                          text-transform: uppercase;
+                                        }
+.qcPostContent ul li                    { margin-left: 12px }
+.qcPostContent p                        { margin: 20px 0 }
+
+
+/* --------------------------------------------------------------------------------------------------------------------------- */
+/* 	11. PLUGIN CSS */
+/* --------------------------------------------------------------------------------------------------------------------------- */
+
+/* === 1. TIPSY === */
+.tipsy                                  { padding: 5px;
+                                          font-size: 10px;
+                                          position: absolute;
+                                          z-index: 100000;
+                                        }
+.tipsy-inner                            { padding: 5px 8px 4px 8px;
+                                          background-color: black;
+                                          color: white;
+                                          max-width: 200px;
+                                          text-align: center;
+                                          text-shadow: none;
+                                        }
+.tipsy-inner                            { border-radius: 3px;
+                                          -moz-border-radius: 3px;
+                                          -webkit-border-radius: 3px;
+                                        }
+.tipsy-arrow                            { position: absolute;
+                                          background: url(../img/theme/tipsy.gif) no-repeat top left;
+                                          width: 9px;
+                                          height: 5px;
+                                        }
+.tipsy-n .tipsy-arrow                   { top: 0;
+                                          left: 50%;
+                                          margin-left: -4px;
+                                        }
+.tipsy-nw .tipsy-arrow                  { top: 0;
+                                          left: 10px;
+                                        }
+.tipsy-ne .tipsy-arrow                  { top: 0;
+                                          right: 10px;
+                                        }
+.tipsy-s .tipsy-arrow                   { bottom: 0;
+                                          left: 50%;
+                                          margin-left: -4px;
+                                          background-position: bottom left;
+                                        }
+.tipsy-sw .tipsy-arrow                  { bottom: 0;
+                                          left: 10px;
+                                          background-position: bottom left;
+                                        }
+.tipsy-se .tipsy-arrow                  { bottom: 0;
+                                          right: 10px;
+                                          background-position: bottom left;
+                                        }
+.tipsy-e .tipsy-arrow                   { top: 50%;
+                                          margin-top: -4px;
+                                          right: 0;
+                                          width: 5px;
+                                          height: 9px;
+                                          background-position: top right;
+                                        }
+.tipsy-w .tipsy-arrow                   { top: 50%;
+                                          margin-top: -4px;
+                                          left: 0;
+                                          width: 5px;
+                                          height: 9px;
+                                        }
+
+
+/* --------------------------------------------------------------------------------------------------------------------------- */
+/* 12. MISCELLANEOUS */
+/* --------------------------------------------------------------------------------------------------------------------------- */
+
+#qcSubFooter .widget.last               { border: 0; }   
+#qcAside-2.border                       { border-right: 1px #ddd solid; }
+#qcAside-1.no-border                    { border: 0; }
+.qcPara 				{ padding: 20px; }
+img.about 				{ width: 100%; }
+img.left 				{ float: left; }
+img.right 				{ float: right; }
+                                     
+/* --------------------------------------------------------------------------------------------------------------------------- */
+/* 13. MEDIA QUERIES / RESPONSIVE CSS */
+/* --------------------------------------------------------------------------------------------------------------------------- */
+
+/*	TABLET : 768px 
+---------------------------------------------------------------------------------------------------------------------------------
+	cols    1     2      3      4      5      6      7      8      9      10      11      12     13     14     15     16     		
+	px      28    76     124    172    220    268    316    364    412    460     508     556    604    652    700    748     */
+	
+@media only screen and (min-width: 768px) and (max-width: 959px)    { 
+
+	#qcLogo                     { float: none; 
+							margin: 0 auto;
+						   }				   
+	#qcSlider,
+	#qcSlider li img            { width: 335px;
+	                              height: 335px;
+	                            }
+	#qcAside-2 .qcPostList span { display: none }
+	#qcSubFooter .widget        { width: 215px }
+	#qcNewsTicker li            { width: 500px }
+	.qcPostSingleList li a img  { width: 180px;
+	                              height: 180px;
+	                            }
+	#qcAside-2.single           { width: 30.07% }
+	.qcTwoColumns               { width: 359px }
+	.qcThreeColumns             { width: 232px }
+	.qcFourColumns              { width: 169px }
+	.qcFiveColumns              { width: 131px }
+	#qcLogo                     { float: none;
+	                              display: block;
+	                            }
+	.qcAdBlock728X90            { float: none;
+	                              display: block;
+	                              margin: 15px auto 0 auto;
+	                            }           
+	#qcPostGal li  		   { width: 116px; } 	                            
+	                            
+}
+               
+               
+/*	MOBILE PORTRAIT : 320px 
+---------------------------------------------------------------------------------------------------------------------------------
+	cols    1     2      3      4      5      6      7      8      9      10      11      12     13     14     15     16     		
+	px      300   300    300    300    300    300    300    300    300    300     300     300    300    300    300    300     */
+	
+@media only screen and (max-width: 767px)    { 
+
+	#qcClock                         { display: none }
+	#qcTopNav                        { float: left }
+	#qcLogo                          { float: none; 
+								margin: 0 auto;
+							   }
+	#qcMainContent,
+	#qcMainContent.home,
+	#qcAside-1,
+	#qcAside-2                       { float: none;
+	                                   width: 100%;
+	                                 }
+	#qcAside-1                       { padding: 5px 0 }
+	#PriNavList                      { display: none }
+	#dd-menu                         { display: block;
+	                                   position: relative;
+	                                   top: -6px;
+	                                   width: 300px;
+	                                   padding: 2px 0;
+	                                   margin: 15px 0;
+	                                 }
+	#qcSubBar                        { border-radius: 5px }
+	#qcSubBar .label-info,
+	#qcSubBar ul                     { display: block;
+	                                   float: none;
+	                                   text-align: center;
+	                                 }
+	#qcSubBar ul                     { padding: 10px }
+	#qcSubBar #qcSearchBox           { display: none }
+	#qcSlider,
+	#qcSlider li img                 { width: 250px;
+	                                   height: 250px;
+	                                 }
+	#qcSubFooter .widget             { width: 260px;
+	                                   border: 0;
+	                                 }
+	.qcFeaturedLable                 { margin-top: 20px }
+	.slides h4                       { padding-bottom: 5px }
+	.slides p                        { display: none }
+	#qcFooterNav ul li               { display: block;
+	                                   float: none;
+	                                 }
+	#qcFooterNav ul li a             { padding: 0;
+	                                   border: 0;
+	                                 }
+	.qcPostList span                 { padding-bottom: 10px }
+	#qcMainContent .qcPostList li h4 { margin-top: -1px }
+	#qcNewsTicker li                 { width: auto }
+	.qcPostSingleList li a img       { float: none;
+	                                   width: 96%;
+	                                   height: auto;
+	                                   margin-bottom: 12px;
+	                                 }
+	#qcAside-2.single                { width: 100%;
+	                                   background: #fff;
+	                                   -webkit-box-shadow: none;
+	                                   -moz-box-shadow: none;
+	                                   box-shadow: none;
+	                                 }
+	.hover-post-meta-comment         { display: none }
+	.qcPostContent img               { width: 100%;
+	                                   display: block;
+	                                   margin: 10px 0;
+	                                 }
+	.qcTwoColumns,
+	.qcThreeColumns,
+	.qcFourColumns,
+	.qcFiveColumns                   { float: none;
+	                                   width: 100%;
+	                                   margin: 10px 0;
+	                                 }
+	.qcForm input,
+	.qcForm select,
+	.qcForm textarea                 { width: 247px }
+	.qcAdBlock728X90                 { display: none }
+	#qcPostGal li  		   	   { width: 122px; }	
+	
+}
+               
+               
+/*	MOBILE WIDE / LANDSCAPE : 480px 
+---------------------------------------------------------------------------------------------------------------------------------
+	cols    1     2      3      4      5      6      7      8      9      10      11      12     13     14     15     16     		
+	px      420   420    420    420    420    420    420    420    420    420     420     420    420    420    420    420     */
+	
+@media only screen and (min-width: 480px) and (max-width: 767px)    { 
+
+	#qcSubFooter .widget       { width: 380px }
+	#qcSlider,
+	#qcSlider li img           { width: 370px;
+	                             height: 370px;
+	                           }
+	#dd-menu                   { width: 420px }
+	.slides h4                 { padding-bottom: 0 }
+	.slides p                  { display: block }
+	.qcPostSingleList li a img { width: 97% }
+	.hover-post-meta-comment   { display: block }
+	.qcForm input,
+	.qcForm textarea           { width: 367px }
+	.qcForm select             { width: 388px }
+	#qcPostGal li  		  { width: 118px; }	
+	
+}
+                                       
